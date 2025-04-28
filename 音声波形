@@ -1,0 +1,27 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+# サンプルデータの作成 (正弦波)
+t = np.linspace(0, 10, 500)
+wave = np.sin(t)
+
+# 3Dデータの作成
+x = np.linspace(-5, 5, 10)
+y = np.linspace(-5, 5, 10)
+z = np.outer(wave, np.ones(len(x)))
+
+# プロットの準備
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+
+# 波形の描画
+for i, xi in enumerate(x):
+    ax.plot(wave, y[i] * np.ones_like(wave), xi, color='blue')
+
+# 軸ラベル
+ax.set_xlabel('Time')
+ax.set_ylabel('Amplitude')
+ax.set_zlabel('Cube Depth')
+
+plt.show()
